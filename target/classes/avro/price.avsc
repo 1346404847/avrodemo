@@ -1,0 +1,67 @@
+{
+    "namespace": "com.alina.avro",
+    "protocol": "messageProtocol",
+    "doc": "This is a message.",
+    "name": "Message",
+    "types": [
+        {
+            "name":"messageRequest",
+            "type":"record",
+            "fields":[
+                {"name":"name", "type":"string","doc":"物品名称"},
+                {"name":"type", "type":"int","doc":"物品类型"},
+                {"name":"price", "type":"double","doc":"物品价格"},
+                {"name":"valid", "type":"boolean","doc":"www"},
+                {"name":"content", "type":"string","doc":"物品描述","default":"null"}
+            ]
+        },
+
+
+         {
+            "name":"messageArray",
+            "type":"record",
+            "fields":[
+                {"name":"name", "type":"string","doc":"物品名称"},
+                {"name":"type", "type":"int","doc":"物品类型"}
+            ]
+         },
+
+        {
+            "name":"bodyMessage",
+            "type":"record",
+            "fields":[
+                {"name":"name", "type":"string","doc":"物品名称"},
+                {"name":"type", "type":"int","doc":"物品类型"},
+                {"name":"price", "type":"double","doc":"物品价格"},
+                {"name":"valid", "type":"boolean","doc":"www"},
+                {"name":"content", "type":"string","doc":"物品描述","default":"null"},
+                {"name":"prop", "type":[{"type": "array", "items": "messageArray"}],"玩家道具数组中嵌套对象"}
+            ]
+        },
+
+        {
+            "name":"messageResponse",
+            "type":"record",
+            "fields":[
+                {"name":"result", "type":"int","doc":"物品类型格式"},
+                {
+                    "name":"body",
+                    "type":"bodyMessage"
+                }
+            ]
+        }
+
+
+
+    ],
+    "messages":{
+        "sendMessage":{
+             "doc" : "message test",
+             "request" :[
+                    {"name":"messageRequest","type":"messageRequest","doc":"请求信息"}
+             ],
+             "response" : "messageResponse"
+        }
+    }
+
+}

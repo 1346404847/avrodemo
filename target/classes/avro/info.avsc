@@ -1,0 +1,53 @@
+{
+    "namespace":"avro",
+    "doc":"This is a message.",
+    "protocol":"messageProtocol",
+    "name":"nameMessage",
+    "types":[
+        {
+            "name":"requestMessage",
+            "type":"record",
+            "fields":[ {"name":"PlatId", "type":"string","doc":"平台"} ]
+        },
+        {
+            "name":"responseMessage",
+            "type":"record",
+            "fields":[ {"name":"PlatId", "type":"string","doc":"平台"} ]
+        },
+        {
+            "name":"requestUpdateUserInfo",
+            "type":"record",
+            "fields":[
+                {"name":"PlatId","type":"string","doc":"参数平台"}
+            ]
+        },
+        {
+            "name":"responseUpdateUserInfo",
+            "type":"record",
+            "fields":[
+                {"name":"Result","type":"int","doc":"结果code 0为操作成功，其他为不成功"}
+
+            ]
+
+        }
+
+    ],
+    "messages":{
+        "vegaSendMail":{
+            "doc":"say Hello to manbers",
+            "request":[
+                    { "name":"aaaaa", "type":"requestMessage" },
+                    { "name":"secret","type":"string","dco":"密钥验证"}
+            ],
+            "response":"responseMessage"
+        },
+        "vegaUpdateUserInfo":{
+            "doc":"say Hello to manbers",
+            "request":[
+                    { "name":"requestUpdateUserInfo", "type":"requestUpdateUserInfo" },
+                    { "name":"secret","type":"string","dco":"签名","default":"null"}
+            ],
+            "response":"responseUpdateUserInfo"
+        }
+    }
+}

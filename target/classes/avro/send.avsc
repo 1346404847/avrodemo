@@ -1,0 +1,53 @@
+{
+    "namespace":"com.alina.avro",
+    "doc":"this is a message",
+    "protocol":"messageProtocol",
+    "name":"nameMessage",
+    "types":[
+        {
+            "name":"requestMessage",
+            "type":"record",
+            "fields":[
+                {"name":"PlatId","type":"string","doc":"平台"},
+                {"name":"source","type":"string","doc":"区服"}
+            ]
+
+        },
+
+        {
+            "name":"dataMessage",
+            "type":"record",
+            "fields":[
+                {"name":"PlatId","type":"string","doc":"返回平台"},
+                {"name":"source","type":"string","doc":"返回区服"}
+            ]
+
+
+        },
+        {
+            "name":"responseMessage",
+            "type":"record",
+            "fields":[
+                {"name":"result","type":"string","doc":"正常返回0"},
+                {"name":"data","type":"dataMessage","doc":"dataMessage需要返回的格式"}
+            ]
+        }
+
+    ],
+
+    "messages":{
+        "sendMessage":{
+            "request":[{"name":"requestMessage","type":"requestMessage"}],
+            "response": "responseMessage"
+
+        },
+        "VEGA_ADD_BLACK_CHAT_REQ":{
+            "request":[{"name":"requestMessage","type":"requestMessage"}],
+            "response": "responseMessage"
+
+        }
+
+    }
+
+
+}

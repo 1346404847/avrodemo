@@ -1,0 +1,85 @@
+{
+    "namespace":"com.alina.avro",
+    "doc":"this is a message",
+    "protocol":"messageProtocol",
+    "name":"nameMessage",
+    "types":[
+        {
+            "name":"requestSendMail",
+            "type":"record",
+            "fields":[
+                {"name":"PlatId","type":"string","doc":"平台","default":"null"},
+                {"name":"source","type":"string","doc":"区服"}
+            ]
+
+        },
+
+        {
+            "name":"responseSendMail",
+            "type":"record",
+            "fields":[
+                {"name":"PlatId","type":"string","doc":"正常返回0"},
+                {"name":"source","type":"string"}
+            ]
+        },
+
+        {
+            "name":"requestMessage",
+            "type":"record",
+            "fields":[
+                {"name":"PlatId","type":"string","doc":"平台","default":"null"},
+                {"name":"source","type":"string","doc":"区服","default":"null"}
+            ]
+
+        },
+
+        {
+            "name":"responseMessage",
+            "type":"record",
+            "fields":[
+                {"name":"PlatId","type":"string","doc":"正常返回0"},
+                {"name":"source","type":"string"}
+            ]
+        },
+        {
+            "name":"requestUserInfo",
+            "type":"record",
+            "fields":[
+                {"name":"PlatId","type":"string","doc":"平台","default":"null"},
+                {"name":"source","type":"string","doc":"区服","default":"null"}
+            ]
+
+        },
+
+        {
+            "name":"responseUserInfo",
+            "type":"record",
+            "fields":[
+                {"name":"PlatId","type":"string","doc":"正常返回0"},
+                {"name":"source","type":"string","doc":"返回区服"}
+            ]
+        }
+
+    ],
+
+    "messages":{
+        "vegaSendMail":{
+            "request":[{"name":"requestSendMail","type":"requestSendMail"}],
+            "response": "responseSendMail"
+
+        },
+        "vegaUpdateUserReward":{
+            "request":[{"name":"requestMessage","type":"requestMessage"}],
+            "response": "responseMessage"
+
+        },
+        "vegaGetUserInfo":{
+            "request":[{"name":"requestUserInfo","type":"requestUserInfo"}],
+            "response": "responseUserInfo"
+
+        }
+
+    }
+
+
+}
